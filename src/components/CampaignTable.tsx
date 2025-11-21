@@ -23,11 +23,11 @@ export default function CampaignTable() {
     }
 
     if (sortBy === "ctr") {
-      result.sort((a, b) => b.ctr - a.ctr);
+      result.sort((a, b) => a.ctr - b.ctr);
     }
 
     if (sortBy === "conversions") {
-      result.sort((a, b) => b.conversions - a.conversions);
+      result.sort((a, b) => a.conversions - b.conversions);
     }
 
     return result;
