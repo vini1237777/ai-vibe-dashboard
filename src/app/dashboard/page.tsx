@@ -1,17 +1,23 @@
+import Filters from "../../components/Filters";
+import CampaignTable from "../../components/CampaignTable";
+import TrendChart from "../../components/TrendChart";
+
 export default function DashboardPage() {
   return (
-    <main className="p-6 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold mb-2">
-        Marketing Intelligence Dashboard
-      </h1>
+    <main className="p-6 max-w-7xl mx-auto space-y-6 bg-purple-50">
+      <header>
+        <h1 className="text-3xl font-bold">Marketing Intelligence Dashboard</h1>
+        <p className="text-gray-500 mt-1">
+          Monitor and analyze the performance of your ad campaigns.
+        </p>
+      </header>
 
-      <p className="text-gray-500 mb-6">
-        Monitor and analyze your campaign performance
-      </p>
+      <Filters />
 
-      <div className="bg-white p-4 rounded-lg shadow">
-        <p>Dashboard content will go here.</p>
-      </div>
+      <section className="grid gap-6 lg:grid-cols-[2fr,1.3fr]">
+        <CampaignTable />
+        <TrendChart />
+      </section>
     </main>
   );
 }

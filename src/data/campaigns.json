@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "Instagram Launch",
+    "impressions": 12000,
+    "clicks": 540,
+    "ctr": 4.5,
+    "conversions": 72,
+    "status": "Active",
+    "date": "2025-01-01"
+  },
+  {
+    "id": "2",
+    "name": "Google Search Campaign",
+    "impressions": 20000,
+    "clicks": 860,
+    "ctr": 4.3,
+    "conversions": 143,
+    "status": "Paused",
+    "date": "2025-01-02"
+  },
+  {
+    "id": "3",
+    "name": "YouTube Awareness",
+    "impressions": 18000,
+    "clicks": 310,
+    "ctr": 1.7,
+    "conversions": 28,
+    "status": "Active",
+    "date": "2025-01-03"
+  }
+]
