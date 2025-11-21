@@ -9,11 +9,11 @@ export function useCampaignPolling() {
   const setError = useCampaignStore((s) => s.setError);
 
   useEffect(() => {
-    let controller = new AbortController();
+    const controller = new AbortController();
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
     const MAX_RETRIES = 3;
-    const BASE_POLL_INTERVAL = 15000;
+    // const BASE_POLL_INTERVAL = 15000;
 
     const fetchWithRetry = async (attempt = 0) => {
       try {
@@ -29,10 +29,10 @@ export function useCampaignPolling() {
         setCampaigns(data);
         setLoading(false);
 
-        timeoutId = setTimeout(() => {
-          controller = new AbortController();
-          fetchWithRetry(0);
-        }, BASE_POLL_INTERVAL);
+        // timeoutId = setTimeout(() => {
+        //   controller = new AbortController();
+        //   fetchWithRetry(0);
+        // }, BASE_POLL_INTERVAL);
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err: unknown) {
         if (controller.signal.aborted) return;
