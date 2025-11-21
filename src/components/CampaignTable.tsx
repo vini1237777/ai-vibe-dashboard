@@ -1,20 +1,48 @@
 "use client";
 
+import { useMemo } from "react";
 import { useCampaignStore } from "../store/useCampaignStore";
+import type { Campaign } from "../types/campaign";
 
 export default function CampaignTable() {
-  const campaigns = useCampaignStore((s) => s.getFilteredCampaigns());
+  const campaigns = useCampaignStore((s) => s.campaigns);
+  const statusFilter = useCampaignStore((s) => s.statusFilter);
+  const sortBy = useCampaignStore((s) => s.sortBy);
+  const search = useCampaignStore((s) => s.search);
+
+  const filteredCampaigns = useMemo((): Campaign[] => {
+    let result = [...campaigns];
+
+    if (statusFilter !== "all") {
+      result = result.filter((c) => c.status === statusFilter);
+    }
+
+    if (search.trim()) {
+      const q = search.toLowerCase();
+      result = result.filter((c) => c.name.toLowerCase().includes(q));
+    }
+
+    if (sortBy === "ctr") {
+      result.sort((a, b) => b.ctr - a.ctr);
+    }
+
+    if (sortBy === "conversions") {
+      result.sort((a, b) => b.conversions - a.conversions);
+    }
+
+    return result;
+  }, [campaigns, statusFilter, sortBy, search]);
 
   return (
     <section className="bg-white p-4 rounded-lg shadow-sm border">
       <header className="flex items-center justify-between mb-4">
         <h2 className="font-semibold text-lg">Campaigns</h2>
         <span className="text-xs text-gray-500">
-          {campaigns.length} campaigns
+          {filteredCampaigns.length} campaigns
         </span>
       </header>
 
-      {campaigns.length === 0 ? (
+      {filteredCampaigns.length === 0 ? (
         <p className="text-sm text-gray-500">
           No campaigns match the selected filters.
         </p>
@@ -33,7 +61,7 @@ export default function CampaignTable() {
             </thead>
 
             <tbody>
-              {campaigns.map((c) => (
+              {filteredCampaigns.map((c) => (
                 <tr key={c.id} className="border-b last:border-b-0">
                   <td className="px-3 py-2">{c.name}</td>
                   <td className="px-3 py-2 text-right">
