@@ -33,6 +33,7 @@ export function useCampaignPolling() {
           controller = new AbortController();
           fetchWithRetry(0);
         }, BASE_POLL_INTERVAL);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err: unknown) {
         if (controller.signal.aborted) return;
         if (attempt < MAX_RETRIES) {
