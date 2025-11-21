@@ -40,7 +40,7 @@ A modern, responsive marketing intelligence dashboard with an AI-powered prompt 
 ## Quality Bar Compliance
 
 Lighthouse (mobile):
-Performance: 90
+Performance: 92
 Accessibility: 96
 Best Practices: 100
 SEO: 100
