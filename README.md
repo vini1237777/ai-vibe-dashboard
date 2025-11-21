@@ -29,7 +29,7 @@ SEO, best practices, and performance optimized (Lighthouse aligned)
 
 Lighthouse (mobile):
 
-Performance: 93
+Performance: 95
 
 Accessibility: 96
 

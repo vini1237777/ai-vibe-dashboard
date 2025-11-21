@@ -9,6 +9,8 @@ export default function CampaignTable() {
   const statusFilter = useCampaignStore((s) => s.statusFilter);
   const sortBy = useCampaignStore((s) => s.sortBy);
   const search = useCampaignStore((s) => s.search);
+  const error = useCampaignStore((s) => s.error);
+  const isLoading = useCampaignStore((s) => s.isLoading);
 
   const filteredCampaigns = useMemo((): Campaign[] => {
     let result = [...campaigns];
@@ -32,6 +34,24 @@ export default function CampaignTable() {
 
     return result;
   }, [campaigns, statusFilter, sortBy, search]);
+
+  if (isLoading) {
+    return (
+      <section className="bg-white p-4 rounded-lg shadow-sm border">
+        <p className="text-sm text-gray-400 animate-pulse">
+          Loading campaigns...
+        </p>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="bg-white p-4 rounded-lg shadow-sm border">
+        <p className="text-sm text-red-600">{error}</p>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-white p-4 rounded-lg shadow-sm border">

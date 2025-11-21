@@ -12,24 +12,33 @@ type CampaignStore = {
   statusFilter: StatusFilter;
   sortBy: SortOption;
   search: string;
+  isLoading: boolean;
+  error: string | null;
+
+  setCampaigns: (campaigns: Campaign[]) => void;
   setStatusFilter: (status: StatusFilter) => void;
   setSortBy: (sort: SortOption) => void;
   setSearch: (value: string) => void;
-  getFilteredCampaigns: () => Campaign[];
+  setLoading: (value: boolean) => void;
+  setError: (value: string | null) => void;
 };
 
-const initialCampaigns = campaignsData as Campaign[];
+const campaigns = campaignsData as Campaign[];
 
 export const useCampaignStore = create<CampaignStore>((set, get) => ({
-  campaigns: initialCampaigns,
+  campaigns,
   statusFilter: "all",
   sortBy: "none",
   search: "",
+  isLoading: false,
+  error: null,
 
+  setCampaigns: (campaigns) => set({ campaigns }),
   setStatusFilter: (status) => set({ statusFilter: status }),
   setSortBy: (sort) => set({ sortBy: sort }),
   setSearch: (value) => set({ search: value }),
-
+  setLoading: (value) => set({ isLoading: value }),
+  setError: (value) => set({ error: value }),
   getFilteredCampaigns: () => {
     const { campaigns, statusFilter, sortBy, search } = get();
 

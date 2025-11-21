@@ -1,6 +1,7 @@
 import Filters from "../../components/Filters";
 import CampaignTable from "../../components/CampaignTable";
 import TrendChart from "../../components/TrendChart";
+import DashboardClient from "./DashboardClient";
 
 export const metadata = {
   title: "Marketing Dashboard | AI Vibe",
@@ -10,20 +11,24 @@ export const metadata = {
 
 export default function DashboardPage() {
   return (
-    <main className="p-6 max-w-7xl mx-auto space-y-6 bg-purple-50">
-      <header>
-        <h1 className="text-3xl font-bold">Marketing Intelligence Dashboard</h1>
-        <p className="text-gray-500 mt-1">
-          Monitor and analyze the performance of your ad campaigns.
-        </p>
-      </header>
+    <DashboardClient>
+      <main className="p-6 max-w-7xl mx-auto space-y-6 bg-purple-50">
+        <header>
+          <h1 className="text-3xl font-bold">
+            Marketing Intelligence Dashboard
+          </h1>
+          <p className="text-gray-500 mt-1">
+            Monitor and analyze the performance of your ad campaigns.
+          </p>
+        </header>
 
-      <Filters />
+        <Filters />
 
-      <section className="grid gap-6 lg:grid-cols-[2fr,1.3fr]">
-        <CampaignTable />
-        <TrendChart />
-      </section>
-    </main>
+        <section className="grid gap-6 lg:grid-cols-[2fr,1.3fr]">
+          <CampaignTable />
+          <TrendChart />
+        </section>
+      </main>
+    </DashboardClient>
   );
 }
