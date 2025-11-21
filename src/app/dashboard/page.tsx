@@ -25,8 +25,12 @@ export default function DashboardPage() {
         <Filters />
 
         <section className="grid gap-6 lg:grid-cols-[2fr,1.3fr]">
-          <CampaignTable />
-          <TrendChart />
+          <div className="min-h-[450px]">
+            <CampaignTable />
+          </div>
+          <div className="min-h-[300px]">
+            <TrendChart />
+          </div>
         </section>
       </main>
     </DashboardClient>

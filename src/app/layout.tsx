@@ -30,18 +30,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-50 text-slate-900`}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              name: "AI Vibe Marketing Dashboard",
-              applicationCategory: "BusinessApplication",
-              operatingSystem: "Any",
-            }),
-          }}
-        />
+        <script type="application/ld+json">
+          {`
+        {
+         "@context": "https://schema.org",
+         "@type": "SoftwareApplication",
+         "name": "AI Vibe Growth",
+         "applicationCategory": "BusinessApplication"
+  }
+   `}
+        </script>
 
         <a
           href="#main-content"
