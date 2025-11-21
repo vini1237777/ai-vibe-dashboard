@@ -2,6 +2,12 @@ import Filters from "../../components/Filters";
 import CampaignTable from "../../components/CampaignTable";
 import TrendChart from "../../components/TrendChart";
 
+export const metadata = {
+  title: "Marketing Dashboard | AI Vibe",
+  description:
+    "Track campaign performance, CTR and conversions with an AI-powered dashboard",
+};
+
 export default function DashboardPage() {
   return (
     <main className="p-6 max-w-7xl mx-auto space-y-6 bg-purple-50">

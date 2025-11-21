@@ -1,5 +1,11 @@
 import PromptPlayground from "@/src/components/PromptPlayground";
 
+export const metadata = {
+  title: "Prompt Playground | AI Vibe",
+  description:
+    "Test AI-style commands to filter and analyze marketing campaigns",
+};
+
 export default function PlaygroundPage() {
   return (
     <main className="p-6 max-w-4xl mx-auto space-y-6">
