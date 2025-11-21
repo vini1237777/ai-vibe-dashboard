@@ -1,10 +1,16 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useCampaignStore } from "../store/useCampaignStore";
 import type { Campaign } from "../types/campaign";
 
 export default function CampaignTable() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
   const campaigns = useCampaignStore((s) => s.campaigns);
   const statusFilter = useCampaignStore((s) => s.statusFilter);
   const sortBy = useCampaignStore((s) => s.sortBy);
@@ -32,6 +38,16 @@ export default function CampaignTable() {
 
     return result;
   }, [campaigns, statusFilter, sortBy, search]);
+
+  if (loading) {
+    return (
+      <section className="bg-white p-4 rounded-lg shadow-sm border">
+        <p className="text-sm text-gray-400 animate-pulse">
+          Loading campaigns...
+        </p>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-white p-4 rounded-lg shadow-sm border">
